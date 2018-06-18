@@ -3,7 +3,6 @@
 This is a REST API to manage Transactions and its Statistics. The project has been implemented using the following frameworks/libraries:
 
 * Spring Boot.
-* H2 Database Engine. (In memory database)
 
 ## Prerequisites
 

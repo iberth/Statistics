@@ -9,7 +9,7 @@ public class TransactionService {
 	private static final long THRESHOLD_FOR_VALID_TIMESTAMP = 60*1000; 
 
 	@Autowired
-	private TransactionMapper mapper;
+	private TransactionRepository repository;
 
 	public void saveTransaction(Transaction transaction) throws TransactionExpiredException {
 
@@ -17,11 +17,11 @@ public class TransactionService {
 			throw new TransactionExpiredException("Transaction is older than 60 seconds.");
 		}
 
-		mapper.save(transaction);
+		repository.save(transaction);
 	}
 
 	public Statistic getStatistics() {
-		return mapper.getStatistics(getTimestmapThreshold());
+		return repository.getStatistics(getTimestmapThreshold());
 	}
 
 	private boolean isValidTimestamp(Long timestamp) {
